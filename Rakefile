@@ -31,6 +31,7 @@ Jeweler::Tasks.new do |gem|
   gem.add_development_dependency "bundler", "~> 1.0.10"
   gem.add_development_dependency "jeweler", "~> 1.5.2"
   gem.add_development_dependency "rcov",    ">= 0"
+  gem.add_development_dependency "yard",    "~> 0.6.4"
 end
 Jeweler::RubygemsDotOrgTasks.new
 
