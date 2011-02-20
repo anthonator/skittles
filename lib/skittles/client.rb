@@ -7,5 +7,7 @@ module Skittles
 	# @see http://developer.foursquare.com/docs/index_docs.html
 	class Client < API
 		Dir[File.expand_path('../client/*.rb', __FILE__)].each { |f| require f }
+		
+		include Skittles::Client::Venue
 	end
 end
