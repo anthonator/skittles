@@ -23,6 +23,21 @@ module Skittles
         get("users/#{id}/badges")
       end
       
+      # Returns a history of checkins for the authenticated user.
+      #
+      # @param id [String] For now, only "self" is supported.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 500.
+      # @option options [Integer] offset Used to page through results.
+      # @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
+      # @option options [Integer] beforeTimestamp Retrieve the first results prior to these seconds since epoch.
+      # @return [Hashie::Mash] A count of items in check-ins.
+      # @requires_acting_user Yes
+      # @see http://developer.foursquare.com/docs/users/checkins.html 
+      def checkins(id = 'self', options = {})
+        get("users/#{id}/checkins").checkins
+      end
+      
       # Denies a pending friend request from another user.
       #
       # @param id [String] The user ID of a pending friend.
@@ -112,21 +127,6 @@ module Skittles
       # @see http://developer.foursquare.com/docs/users/unfriend.html
       def unfriend(id)
         post("users/#{id}/unfriend").user
-      end
-      
-      # Returns a history of checkins for the authenticated user.
-      #
-      # @param id [String] For now, only "self" is supported.
-      # @param options [Hash] A customizable set of options.
-      # @option options [Integer] limit Number of results to return, up to 500.
-      # @option options [Integer] offset Used to page through results.
-      # @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
-      # @option options [Integer] beforeTimestamp Retrieve the first results prior to these seconds since epoch.
-      # @return [Hashie::Mash] A count of items in check-ins.
-      # @requires_acting_user Yes
-      # @see http://developer.foursquare.com/docs/users/checkins.html 
-      def user_checkins(id = 'self', options = {})
-        get("users/#{id}/checkins").checkins
       end
       
       # Helps a user locate friends.
