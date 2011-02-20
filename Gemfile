@@ -12,3 +12,7 @@ group :development do
   gem "rcov",    ">= 0"
   gem "yard",    "~> 0.6.4"
 end
+
+gem "oauth2",    "~> 0.1.1"
+gem "yajl-ruby", "~> 0.8.1"
+gem "hashie",    "~> 1.0.0"
