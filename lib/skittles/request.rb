@@ -33,10 +33,9 @@ module Skittles
 		  	
 		  	options.merge!({
 		  		:client_id     => client_id,
-		  		:client_secret => client_secret,
-		  		:oauth_token => access_token
+		  		:client_secret => client_secret
 		  	})
-		  	response = connection.request(method, paramify(path, options), { 'oauth_token' => access_token }, headers)
+		  	response = connection.request(method, paramify(path, options), headers)
 		  	
 		  	unless raw
 		  		result = Yajl::Parser.new.parse(response)
