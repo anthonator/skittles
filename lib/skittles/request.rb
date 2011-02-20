@@ -9,6 +9,21 @@ module Skittles
 			request(:get, path, options, raw)
 		end
 		
+		# Performs an HTTP POST request
+		def post(path, options = {}, raw = false)
+			request(:post, path, options, raw)
+		end
+		
+		# Performs an HTTP PUT request
+		def put(path, options = {}, raw = false)
+		  request(:put, path, options, raw)
+		end
+		
+		# Performs an HTTP DELETE request
+		def delete(path, options = {}, raw = false)
+		  request(:delete, path, options, raw)
+		end
+		
 		private
 		  #Perform an HTTP request
 		  def request(method, path, options, raw)
@@ -27,7 +42,7 @@ module Skittles
 		  		result = Yajl::Parser.new.parse(response)
 		  	end
 		  	
-		  	raw ? response : Hashie::Mash.new(result)
+		  	raw ? response : Hashie::Mash.new(result).response
 		  end
 		  
 		  # Encode path and turn params into HTTP query.
