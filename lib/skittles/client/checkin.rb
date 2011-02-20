@@ -14,7 +14,7 @@ module Skittles
       # @option options [String] llAcc Accuracy of the user's latitude and longitude, in meters.
       # @option options [String] alt Altitude of the user's location, in meters.
       # @option options [String] altAcc Vertical accuracy of the user's location, in meters.
-      # @return A checkin object.
+      # @return [Hashie::Mash] A checkin object.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/add.html
       def add_checkin(broadcast = 'private', options = {})
@@ -25,7 +25,7 @@ module Skittles
       #
       # @param id [String] The id of the checkin to add a comment to.
       # @param text [String] The text of the comment, up to 200 characters.
-      # @return The newly-created comment.
+      # @return [Hashie::Mash] The newly-created comment.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/addcomment.html
       def addcomment(id, text)
@@ -37,7 +37,7 @@ module Skittles
       #
       # @param checkin_id [String] The id of the checkin to remove a comment from.
       # @param comment_id [String] The id of the comment to remove.
-      # @return The checkin, minus this comment.
+      # @return [Hashie::Mash] The checkin, minus this comment.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/deletecomment.html
       def deletecomment(checkin_id, comment_id)
