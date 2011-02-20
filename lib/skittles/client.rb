@@ -9,5 +9,6 @@ module Skittles
 		Dir[File.expand_path('../client/*.rb', __FILE__)].each { |f| require f }
 		
 		include Skittles::Client::Venue
+		include Skittles::Client::User
 	end
 end
