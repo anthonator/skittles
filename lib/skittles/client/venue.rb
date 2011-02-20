@@ -75,18 +75,6 @@ module Skittles
 			  get("venues/#{id}/herenow", options).hereNow
 			end
 			
-			# Allows a user to mark a venue to-do, with optional text.
-			#
-			# @param id The venue you want to mark to-do.
-			# @param options [Hash] A customizable set of options.
-			# @option options [String] text The text of the tip.
-			# @return [Hashie::Mash] The newly-added to-do, which contains a tip created implicitly.
-			# @requires_acting_user Yes
-			# @see http://developer.foursquare.com/docs/venues/marktodo.html
-			def marktodo(id, options = {})
-			  post("venues/#{id}/marktodo").todo
-			end
-			
 			# Returns photos for a venue.
       #
       # @param id [String] The venue you want photos for.
@@ -144,6 +132,18 @@ module Skittles
       # @see http://developer.foursquare.com/docs/venues/venues.html 
       def venue(id)
         get("venues/#{id}").venue
+      end
+      
+      # Allows a user to mark a venue to-do, with optional text.
+      #
+      # @param id The venue you want to mark to-do.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] text The text of the tip.
+      # @return [Hashie::Mash] The newly-added to-do, which contains a tip created implicitly.
+      # @requires_acting_user Yes
+      # @see http://developer.foursquare.com/docs/venues/marktodo.html
+      def venue_marktodo(id, options = {})
+        post("venues/#{id}/marktodo").todo
       end
 			
 			# Returns a list of venues near the current location, optionally matching
