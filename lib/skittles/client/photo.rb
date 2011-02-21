@@ -19,6 +19,7 @@ module Skittles
       # Allows users to add a new photo to a checkin, tip, or a venue in
       # general.
       #
+      # @param file [String] Path to the file to upload.
       # @param options [Hash] A customizable set of options.
       # @option options [String] checkinId The id of a checkin owned by the user.
       # @option options [String] tipId The ID of a tip owned by the user.
