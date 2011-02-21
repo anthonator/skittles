@@ -53,7 +53,7 @@ module Skittles
       # @param problem [String] One of mislocated, closed, duplicate.
       # @require_acting_user Yes
       # @see http://developer.foursquare.com/docs/venues/flag.html
-      def flag(id, problem)
+      def flag_venue(id, problem)
         post("venues/#{id}/flag", { :problem => problem })
         nil
       end

@@ -9,7 +9,7 @@ module Skittles
       # @return [Hashie::Mash] A user object for the approved user.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/approve.html
-      def approve(id)
+      def approve_user(id)
         post("users/#{id}/approve").user
       end
       # Returns badges for a given user.
@@ -44,7 +44,7 @@ module Skittles
       # @return [Hashie::Mash] A user object for the denied user.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/deny.html
-      def deny(id)
+      def deny_user(id)
         post("users/#{id}/deny").user
       end
       

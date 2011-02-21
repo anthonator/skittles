@@ -21,6 +21,16 @@ module Skittles
         post("checkins/add", { :broadcast => broadcast }.merge(options)).checkin
       end
       
+      # Get details of a checkin.
+      #
+      # @param id [String] The ID of the checkin to retrieve additional information for.
+      # @return [Hashie::Mash] A complete checkin object.
+      # @requires_acting_user Yes
+      # @see http://developer.foursquare.com/docs/checkins/checkins.html
+      def checkin(id)
+        get("checkins/#{id}").checkin
+      end
+      
       # Comment on a check-in.
       #
       # @param id [String] The id of the checkin to add a comment to.
@@ -28,7 +38,7 @@ module Skittles
       # @return [Hashie::Mash] The newly-created comment.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/addcomment.html
-      def addcomment(id, text)
+      def checkin_addcomment(id, text)
         post("checkins/#{id}/addcomment", { :text => text }).comment
       end
       
@@ -40,18 +50,8 @@ module Skittles
       # @return [Hashie::Mash] The checkin, minus this comment.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/deletecomment.html
-      def deletecomment(checkin_id, comment_id)
+      def checkin_deletecomment(checkin_id, comment_id)
         post("checkins/#{checkin_id}/deletecomment", { :commentId => comment_id }).checkin
-      end
-      
-      # Get details of a checkin.
-      #
-      # @param id [String] The ID of the checkin to retrieve additional information for.
-      # @return [Hashie::Mash] A complete checkin object.
-      # @requires_acting_user Yes
-      # @see http://developer.foursquare.com/docs/checkins/checkins.html
-      def checkin(id)
-        get("checkins/#{id}").checkin
       end
       
       # Returns a list of recent checkins from friends.
@@ -63,7 +63,7 @@ module Skittles
       # @return [Hashie::Mash] An array of checkin objects with user details present.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/recent.html
-      def recent(ll, options = {})
+      def recent_checkins(ll, options = {})
         get("checkins/recent", { :ll => ll }.merge(options)).recent
       end
     end
