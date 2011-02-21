@@ -12,5 +12,6 @@ module Skittles
 		include Skittles::Client::User
 		include Skittles::Client::Checkin
 		include Skittles::Client::Tip
+		include Skittles::Client::Photo
 	end
 end
