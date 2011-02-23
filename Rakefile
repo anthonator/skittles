@@ -16,7 +16,7 @@ Jeweler::Tasks.new do |gem|
   gem.name = "skittles"
   gem.homepage = "http://github.com/anthonator/skittles"
   gem.license = "MIT"
-  gem.summary = "Foursquare v2 REST API client library for Ruby"
+  gem.summary = %Q{Foursquare v2 REST API client library for Ruby}
   #gem.description = %Q{TODO: longer description of your gem}
   gem.email = "anthony@sticksnleaves.com"
   gem.version = Skittles::VERSION
