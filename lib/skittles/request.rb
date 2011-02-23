@@ -64,6 +64,8 @@ module Skittles
 		  	     error = Skittles::ServiceUnavailable.new
 		  	   when 504
 		  	     error = Skittles::GatewayTimeout.new
+		  	   else
+		  	     error = Skittles::Error.new
 		  	   end
 		  	   error.code = info.code.to_i
 		  	   error.type = info.errorType
