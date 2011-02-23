@@ -11,9 +11,9 @@ module Skittles
       # @option options [String] venue Name of the venue.
       # @option options [String] shout A message about a check-in. (140 character max.)
       # @option options [String] ll Latitude and longitude of the user's location.
-      # @option options [String] llAcc Accuracy of the user's latitude and longitude, in meters.
-      # @option options [String] alt Altitude of the user's location, in meters.
-      # @option options [String] altAcc Vertical accuracy of the user's location, in meters.
+      # @option options [Decimal] llAcc Accuracy of the user's latitude and longitude, in meters.
+      # @option options [Decimal] alt Altitude of the user's location, in meters.
+      # @option options [Decimal] altAcc Vertical accuracy of the user's location, in meters.
       # @return [Hashie::Mash] A checkin object.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/add.html

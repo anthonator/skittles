@@ -155,9 +155,9 @@ module Skittles
 			#
 			# @param ll [String] Latitude and longitude of the user's location, so response can include distance.
 			# @param options [Hash] A customizable set of options.
-			# @option options [String] llAcc Accuracy of latitude and longitude, in meters.
-			# @option options [String] alt Altitude of the user's location, in meters.
-			# @option options [String] altAcc Accuracy of the user's altitude, in meters.
+			# @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters.
+			# @option options [Decimal] alt Altitude of the user's location, in meters.
+			# @option options [Decimal] altAcc Accuracy of the user's altitude, in meters.
 			# @option options [String] query A search term to be applied against titles.
 			# @option options [Integer] limit Number of results to return, up to 50.
 			# @option options [String] intent Indicates your intent in performing the search.
