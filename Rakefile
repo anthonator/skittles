@@ -17,10 +17,10 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/anthonator/skittles"
   gem.license = "MIT"
   gem.summary = %Q{Foursquare v2 REST API client library for Ruby}
-  #gem.description = %Q{TODO: longer description of your gem}
+  gem.description = %Q{Foursquare v2 REST API client library for Ruby}
   gem.email = "anthony@sticksnleaves.com"
   gem.version = Skittles::VERSION
-  gem.authors = ["anthonator"]
+  gem.authors = ["Anthony Smith"]
   gem.files = Dir.glob('lib/**/*')
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
