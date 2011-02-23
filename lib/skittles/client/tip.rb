@@ -68,7 +68,7 @@ module Skittles
       # Allows you to remove a tip from your to-do list or done list.
       #
       # @param id [String] The tip you want to unmark.
-      # @return The tip being acted on.
+      # @return [Hashie::Mash] The tip being acted on.
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/tips/unmark.html
       def tip_unmark(id)

@@ -102,7 +102,6 @@ module Skittles
       # @option options [String] crossStreet The nearest intersecting street or streets.
       # @option options [String] phone The phone number of the venue.
       # @option options [String] primaryCategoryId The id of the category to which you want to assign this venue.
-      # @return nil
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/venues/proposeedit.html
       def proposeedit(id, name, address, city, state, zip, ll, options = {})

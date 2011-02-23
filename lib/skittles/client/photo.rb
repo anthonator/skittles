@@ -9,7 +9,7 @@ module Skittles
       # Get details of a photo.
       #
       # @param id [String] The id of the photo to retrieve additional information for.
-      # @return A complete photo object.
+      # @return [Hashie::Mash] A complete photo object.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/photos/photos.html
       def photo(id)
@@ -29,7 +29,7 @@ module Skittles
       # @option options [Decimal] llAcc Accuracy of the user's latitude and longitude, in meters.
       # @option options [Decimal] alt Altitude of the user's location, in meters.
       # @option options [Decimal] altAcc Vertical accuracy of the user's location, in meters.
-      # @return The photo that was just created.
+      # @return [Hashie::Mash] The photo that was just created.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/photos/add.html
       def add_photo(file, options = {})

@@ -17,6 +17,7 @@ module Skittles
       # @param id [String] Name of setting to change, sendToTwitter, sendToFacebook, receivePings, receiveCommentPings.
       # @param value [Integer] 1 for true, and 0 for false.
       # @requires_acting_user Yes
+      # @return [Hashie::Mash] A confirmation message.
       # @see http://developer.foursquare.com/docs/settings/set.html
       def set_setting(id, value)
         post("settings/#{id}/set", { :value => value }).settings
