@@ -33,31 +33,25 @@ module Skittles
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/photos/add.html
       def add_photo(file, options = {})
-        resp = nil
         options.merge!({
           :file => UploadIO.new(file, 'image/jpeg', 'image.jpg'),
           :oauth_token => access_token
         })
         uri = URI.parse("#{endpoint}/photos/add")
-        File.open(file) do |file|
+        File.open(file) do
           req = Net::HTTP::Post::Multipart.new(uri.path, options)
           http = Net::HTTP.new(uri.host, uri.port)
           http.use_ssl = true if uri.scheme == 'https'
-          resp = http.start do |http|
-            http.request(req)
+          resp = http.start do |net|
+            net.request(req)
           end
-        end
-        case resp.code.to_i
-        when 200..299
-          return Hashie::Mash.new(Yajl::Parser.new.parse(resp.body)).response.photo
-        when 401
-          e = OAuth2::AccessDenied.new("Received HTTP 401 during request.")
-          e.response = resp
-          raise e
-        else
-          e = OAuth2::HTTPError.new("Received HTTP #{resp.code} during request.")
-          e.response = resp
-          raise e
+          
+          case resp.code.to_i
+          when 200..299
+            return Skittles::Utils.parse_json(resp.body).response.photo
+          when 400..599
+            Skittles::Utils.handle_foursquare_error(resp)
+          end
         end
       end
     end
