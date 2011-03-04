@@ -17,7 +17,11 @@ http://rdoc.info/github/anthonator/skittles/
     config.access_token  = '...'
   end
   
-  Skittles.venue('211152')
+  begin
+    Skittles.venue('211152')
+  rescue Skittles::Error => e
+    puts "You recieved the #{e.type} error and a status code of #{e.code} which means #{e.detail}."
+  end
 
 == Contributing to Skittles
  
