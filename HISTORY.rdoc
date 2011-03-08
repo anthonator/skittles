@@ -1,0 +1,18 @@
+0.3.0 - March 8, 2011
+* Added signature option to checkin endpoint. 
+* Implemented trending venues endpoint.
+
+0.2.0 - March 3, 2011
+* Implemented Foursquare specific error handling. The following error codes are recognized.
+  * Skittles::Error - Superclass of all Skittles exception classes. Used as a catch all if an error from Foursquare isn't recognized.
+  * Skittles::BadRequest - Raised when Foursquare returns HTTP status code 400.
+  * Skittles::Unauthorized - Raised when Foursquare returns HTTP status code 401.
+  * Skittles::NotFound - Raised when Foursquare returns HTTP status code 404.
+  * Skittles::MethodNotAllowed - Raised when Foursquare returns HTTP status code 405.
+  * Skittles::InternalServerError - Raised when Foursquare returns HTTP status code 500.
+  * Skittles::BadGateway - Raised when Foursquare returns HTTP status code 502.
+  * Skittles::ServiceUnavailable - Raised when Foursquare returns HTTP status code 503.
+  * Skittles::GatewayTimeout - Raised when Foursquare returns HTTP status code 504.
+
+0.1.0 - February 22, 2011
+* Initial release
