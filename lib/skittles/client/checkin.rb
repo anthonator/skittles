@@ -24,11 +24,13 @@ module Skittles
       # Get details of a checkin.
       #
       # @param id [String] The ID of the checkin to retrieve additional information for.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] signature When checkins are sent to public feeds such as Twitter, foursquare appends a signature (s=XXXXXX) allowing users to bypass the friends-only access check on checkins. The same value can be used here for programmatic access to otherwise inaccessible checkins.
       # @return [Hashie::Mash] A complete checkin object.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/checkins/checkins.html
-      def checkin(id)
-        get("checkins/#{id}").checkin
+      def checkin(id, options = {})
+        get("checkins/#{id}", options).checkin
       end
       
       # Comment on a check-in.
