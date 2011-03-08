@@ -115,6 +115,21 @@ module Skittles
         }.merge(options))
         nil
       end
+      
+      # Returns a list of venues near the current location with the most people
+      # currently checked in.
+      #
+      # @note This is an experimental API.
+      # @param ll [String] Latitude and longitude of the user's location.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 50.
+      # @option options [Integer] radius Radius in meters, up to approximately 2000 meters.
+      # @return An array of venues that are currently trending, with their hereNow populated.
+      # @requires_acting_user No
+      # @see http://developer.foursquare.com/docs/venues/trending.html
+      def trending(ll, options = {})
+        get('venues/trending', { :ll => ll }.merge(options))
+      end
 			
 			# Gives details about a venue, including location, mayorship, tags, tips,
       # specials and category.
