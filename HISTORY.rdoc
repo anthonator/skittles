@@ -1,3 +1,7 @@
+0.3.1 - March 12, 2011
+* Modified method tip_unmark to return data below the tip object. This conforms to all other return statements in library.
+* Fixed special method. Needed venueId. Not documented in the Foursquare API.
+
 0.3.0 - March 8, 2011
 * Added signature option to checkin endpoint. 
 * Implemented trending venues endpoint.
