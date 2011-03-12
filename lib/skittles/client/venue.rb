@@ -58,22 +58,22 @@ module Skittles
         nil
       end
       
-			# Provides a count of how many people are at a given venue, plus the
-			# first page of the users there, friends-first, and if the current user
-			# is authenticated.
-			#
-			# @note This is an experimental API.
-			# @param id [String] Id of a venue to retrieve.
-			# @param options [Hash] A customizable set of options.
-			# @option options [Integer] limit Number of results to return, up to 500.
-			# @option options [Integer] offset Used to page through results.
-			# @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
-			# @return [Hashie::Mash] A count of items where items are checkins.
-			# @requires_acting_user No
-			# @see http://developer.foursquare.com/docs/venues/herenow.html 
-			def herenow(id, options = {})
-			  get("venues/#{id}/herenow", options).hereNow
-			end
+      # Provides a count of how many people are at a given venue, plus the
+      # first page of the users there, friends-first, and if the current user
+      # is authenticated.
+      #
+      # @note This is an experimental API.
+      # @param id [String] Id of a venue to retrieve.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 500.
+      # @option options [Integer] offset Used to page through results.
+      # @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
+      # @return [Hashie::Mash] A count of items where items are checkins.
+      # @requires_acting_user No
+      # @see http://developer.foursquare.com/docs/venues/herenow.html 
+      def herenow(id, options = {})
+        get("venues/#{id}/herenow", options).hereNow
+      end
 			
 			# Returns photos for a venue.
       #
