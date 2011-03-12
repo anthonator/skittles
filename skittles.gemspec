@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{skittles}
-  s.version = "0.3.0"
+  s.version = "0.3.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anthony Smith"]
-  s.date = %q{2011-03-08}
+  s.date = %q{2011-03-12}
   s.description = %q{Foursquare v2 REST API client library for Ruby}
   s.email = %q{anthony@sticksnleaves.com}
   s.extra_rdoc_files = [
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/anthonator/skittles}
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.3}
+  s.rubygems_version = %q{1.6.2}
   s.summary = %q{Foursquare v2 REST API client library for Ruby}
   s.test_files = [
     "spec/skittles_spec.rb",
