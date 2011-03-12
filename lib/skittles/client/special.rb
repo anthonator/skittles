@@ -9,8 +9,8 @@ module Skittles
       # @return [Hashie::Mash] A complete special.
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/specials/specials.html
-      def special(id)
-        get("specials/#{id}")
+      def special(special_id, venue_id)
+        get("specials/#{special_id}", :venueId => venue_id).special
       end
       
       # Returns a list of specials near the current location.
@@ -26,7 +26,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/specials/search.html
       def special_search(ll, options = {})
-        get('specials/search', { :ll => ll }.merge(options))
+        get('specials/search', { :ll => ll }.merge(options)).specials
       end
     end
   end
