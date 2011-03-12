@@ -72,7 +72,7 @@ module Skittles
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/tips/unmark.html
       def tip_unmark(id)
-        post("tips/#{id}/unmark")
+        post("tips/#{id}/unmark").tip
       end
     end
   end

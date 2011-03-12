@@ -128,7 +128,7 @@ module Skittles
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/venues/trending.html
       def trending(ll, options = {})
-        get('venues/trending', { :ll => ll }.merge(options))
+        get('venues/trending', { :ll => ll }.merge(options)).venues
       end
 			
 			# Gives details about a venue, including location, mayorship, tags, tips,
