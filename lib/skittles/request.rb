@@ -36,6 +36,10 @@ module Skittles
 		  		:client_secret => client_secret
 		  	})
 		  	
+		  	options.merge!({
+		  	  :v => Time.now.strftime('%Y%m%d')
+		  	})
+		  	
 		  	begin
 		  	  response = connection.request(method, paramify(path, options), headers)
 		  	rescue OAuth2::ErrorWithResponse => e
