@@ -175,6 +175,10 @@ module Skittles
 			# @option options [String] query A search term to be applied against titles.
 			# @option options [Integer] limit Number of results to return, up to 50.
 			# @option options [String] intent Indicates your intent in performing the search.
+			# @option options [String] categoryId A category to limit the results to. (experimental)
+			# @option options [String] url A third-party URL which is attempted to match against a map of venues to URLs. (experimental)
+			# @option options [String] providerId Identifier for a known third party that is part of a map of venues to URLs, used in conjunction with linkedId. (experimental)
+			# @option options [Integer] linkedId Identifier used by third party specified in providerId, which will be attempted to match against a map of venues to URLs. (experimental)
 			# @return [Hashie::Mash] An array of objects representing groups of venues.
 			# @requires_acting_user No
 			# @see http://developer.foursquare.com/docs/venues/search.html 
