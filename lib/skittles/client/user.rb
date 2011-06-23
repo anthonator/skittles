@@ -81,6 +81,15 @@ module Skittles
       def friends(id, options = {})
         get("users/#{id}/friends").friends
       end
+      # Returns the user's leaderboard.
+      #
+      # @param neightbors [Integer] Number of friends' scores to return that are adjacent to your score in ranked order. The current user's score is returned as well.
+      # @return [Hashie::Mash] A count and items containing compact user objects, their respective scores, and their integer rank value relative to the current user.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/users/leaderboard.html
+      def leaderboard(neighbors = nil)
+        get('users/leaderboard').leaderboard
+      end
       
       # Changes whether the acting user will receive pings (phone
       # notifications) when the specified user checks in. 
