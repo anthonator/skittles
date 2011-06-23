@@ -47,6 +47,26 @@ module Skittles
         get('venues/categories').categories
       end
       
+      # Returns a list of recommended venues near the current location.
+      #
+      # @note This is an experimental API.
+      # @param ll [String] Latitude and longitude of the user's location.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters.
+      # @option options [Decimal] alt Altitude of the user's location, in meters.
+      # @option options [Decimal] altAcc Accuracy of the user's altitude, in meters.
+      # @option radius [Integer] Radius to search within, in meters.
+      # @option section [String] One of food, drinks, coffee, shops, or arts. Limits results to venues with categories matching these terms.
+      # @option query [String] A search term to be applies against tips, category tips, etc. at a venue.
+      # @option limit [Integer] Number of results to return, up to 50.
+      # @option basis [String] If present and set to friends or me, limits results to only places where friends have visited or user has visited, respectively.
+      # @return [Hashie::Mash] Response fields keywords, warnings and groups.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/explore.html
+      def explore(ll, options = {})
+        get('venues/explore', { :ll => ll }.merge(options))
+      end
+      
       # Allows a user to indicated a venue is incorrect in some way.
       #
       # @param id [String] The venue id for which an edit is being proposed.
