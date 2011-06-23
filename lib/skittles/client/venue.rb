@@ -148,6 +148,18 @@ module Skittles
         get("venues/#{id}").venue
       end
       
+      # Returns URLs or identifier from third parties that have been applied to this
+      # venue.
+      #
+      # @note This is an experimental API.
+      # @param id [String] The venue you want annotations for.
+      # @return [Hashie::Mash] A count and items of links.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/links.html
+      def venue_links(id)
+        get("venues/#{id}/links").links
+      end
+      
       # Allows a user to mark a venue to-do, with optional text.
       #
       # @param id The venue you want to mark to-do.
