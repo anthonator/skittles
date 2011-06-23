@@ -64,7 +64,7 @@ module Skittles
       # @requires_acting_user No
       # @see https://developer.foursquare.com/docs/venues/explore.html
       def explore(ll, options = {})
-        get('venues/explore', { :ll => ll }.merge(options))
+        get('venues/explore', { :ll => ll }.merge(options)).groups
       end
       
       # Allows a user to indicated a venue is incorrect in some way.
