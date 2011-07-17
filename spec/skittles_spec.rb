@@ -9,7 +9,7 @@ describe "Skittles" do
         response.items.should be_a_kind_of Array
       end
     end
-    
+
     describe :update do
       it 'should return the a JSON response of the current user' do
         response = Skittles.update_user_photo('spec/ruby.jpeg')
@@ -17,7 +17,7 @@ describe "Skittles" do
       end
     end
   end
-  
+
   describe :venue do
     describe :venue_search do
       it 'should return an array of values' do
