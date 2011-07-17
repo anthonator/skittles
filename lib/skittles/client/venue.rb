@@ -30,7 +30,7 @@ module Skittles
       def add_venue(name, options = {})
         post('venues/add', { :name => name }.merge(options)).venue
       end
-      
+
 		  # Returns a hierarchical list of categories applied to venues. Note
       # that top-level categories do not have ids because they cannot be
       # assigned to a venue.
@@ -46,7 +46,7 @@ module Skittles
       def categories
         get('venues/categories').categories
       end
-      
+
       # Returns a list of recommended venues near the current location.
       #
       # @note This is an experimental API.
@@ -66,7 +66,7 @@ module Skittles
       def explore(ll, options = {})
         get('venues/explore', { :ll => ll }.merge(options)).groups
       end
-      
+
       # Allows a user to indicated a venue is incorrect in some way.
       #
       # @param id [String] The venue id for which an edit is being proposed.
@@ -77,7 +77,7 @@ module Skittles
         post("venues/#{id}/flag", { :problem => problem })
         nil
       end
-      
+
       # Provides a count of how many people are at a given venue, plus the
       # first page of the users there, friends-first, and if the current user
       # is authenticated.
@@ -90,11 +90,11 @@ module Skittles
       # @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
       # @return [Hashie::Mash] A count of items where items are checkins.
       # @requires_acting_user No
-      # @see http://developer.foursquare.com/docs/venues/herenow.html 
+      # @see http://developer.foursquare.com/docs/venues/herenow.html
       def herenow(id, options = {})
         get("venues/#{id}/herenow", options).hereNow
       end
-			
+
 			# Returns photos for a venue.
       #
       # @param id [String] The venue you want photos for.
@@ -108,7 +108,7 @@ module Skittles
       def photos(id, group = 'checkin', options = {})
         get("venues/#{id}/photos", {:group => group }.merge(options)).photos
       end
-      
+
       # Allows you to propose a change to a venue.
       #
       # @param id [String] The venue id for which an edit is being proposed.
@@ -135,7 +135,7 @@ module Skittles
         }.merge(options))
         nil
       end
-      
+
       # Returns a list of venues near the current location with the most people
       # currently checked in.
       #
@@ -150,7 +150,7 @@ module Skittles
       def trending(ll, options = {})
         get('venues/trending', { :ll => ll }.merge(options)).venues
       end
-			
+
 			# Gives details about a venue, including location, mayorship, tags, tips,
       # specials and category.
       #
@@ -163,11 +163,11 @@ module Skittles
       # @param id [String] Id of a venue to retrieve.
       # @return [Hashie::Mash] Details about a venue, including location, mayorship, tags, tips, specials, and category.
       # @requires_acting_user No
-      # @see http://developer.foursquare.com/docs/venues/venues.html 
+      # @see http://developer.foursquare.com/docs/venues/venues.html
       def venue(id)
         get("venues/#{id}").venue
       end
-      
+
       # Returns URLs or identifier from third parties that have been applied to this
       # venue.
       #
@@ -179,7 +179,7 @@ module Skittles
       def venue_links(id)
         get("venues/#{id}/links").links
       end
-      
+
       # Allows a user to mark a venue to-do, with optional text.
       #
       # @param id The venue you want to mark to-do.
@@ -191,13 +191,13 @@ module Skittles
       def venue_marktodo(id, options = {})
         post("venues/#{id}/marktodo").todo
       end
-			
+
 			# Returns a list of venues near the current location, optionally matching
 			# the search term.
 			#
 			# If lat and long is provided, each venue includes a distance. If
 			# authenticated, the method will return venue metadata related to you and
-			# your friends. If you do not authenticate, you will not get this data. 
+			# your friends. If you do not authenticate, you will not get this data.
 			#
 			# @param ll [String] Latitude and longitude of the user's location, so response can include distance.
 			# @param options [Hash] A customizable set of options.
@@ -213,11 +213,11 @@ module Skittles
 			# @option options [Integer] linkedId Identifier used by third party specified in providerId, which will be attempted to match against a map of venues to URLs. (experimental)
 			# @return [Hashie::Mash] An array of objects representing groups of venues.
 			# @requires_acting_user No
-			# @see http://developer.foursquare.com/docs/venues/search.html 
+			# @see http://developer.foursquare.com/docs/venues/search.html
 			def venue_search(ll, options = {})
 			  get('venues/search', { :ll => ll }.merge(options)).venues
 			end
-			
+
 			# Returns tips for a venue.
       #
       # @param id [String] The venue you want tips for.
