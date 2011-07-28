@@ -8,5 +8,9 @@ require 'skittles'
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
 RSpec.configure do |config|
-  
+  Skittles.configure do |config|
+    config.client_id =     ''
+    config.client_secret = ''
+    config.access_token =  ''
+  end
 end
