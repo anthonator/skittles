@@ -215,7 +215,7 @@ module Skittles
 			# @requires_acting_user No
 			# @see http://developer.foursquare.com/docs/venues/search.html 
 			def venue_search(ll, options = {})
-			  get('venues/search', { :ll => ll }.merge(options)).groups
+			  get('venues/search', { :ll => ll }.merge(options))
 			end
 			
 			# Returns tips for a venue.

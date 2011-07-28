@@ -44,4 +44,5 @@ pkg
 #.\#*
 #
 # For vim:
-#*.swp
+*.swp
+*.swo
