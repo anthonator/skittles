@@ -81,6 +81,7 @@ module Skittles
       def friends(id, options = {})
         get("users/#{id}/friends").friends
       end
+      
       # Returns the user's leaderboard.
       #
       # @param neightbors [Integer] Number of friends' scores to return that are adjacent to your score in ranked order. The current user's score is returned as well.
@@ -89,6 +90,16 @@ module Skittles
       # @see https://developer.foursquare.com/docs/users/leaderboard.html
       def leaderboard(neighbors = nil)
         get('users/leaderboard').leaderboard
+      end
+      
+      # Returns a user's mayorships
+      #
+      # @params user [String] Identity of the user to get mayorships for. Pass self to get friends of the acting user.
+      # @return [Hashie::Mash] A count and items of objects which currently only contain compact venue objects.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/users/mayorships.html
+      def mayorships(user = 'self')
+        get("users/#{user}/mayorships").mayorships
       end
       
       # Changes whether the acting user will receive pings (phone
