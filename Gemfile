@@ -8,11 +8,12 @@ source "http://rubygems.org"
 group :development do
   gem "rspec",   "~> 2.5.0"
   gem "bundler", "~> 1.0.15"
-  gem "jeweler", "~> 1.6.2"
+  gem "jeweler", "~> 1.6.4"
   gem "rcov",    ">= 0"
   gem "yard",    "~> 0.7.2"
 end
 
-gem "oauth2",    "~> 0.4.1"
-gem "yajl-ruby", "~> 0.8.1"
-gem "hashie",    "~> 1.0.0"
+gem "oauth2",     "~> 0.4.1"
+gem "yajl-ruby",  "~> 0.8.1"
+gem "hashie",     "~> 1.0.0"
+gem "mime-types", "~> 1.16"
