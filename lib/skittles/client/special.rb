@@ -3,9 +3,23 @@ module Skittles
     # Define methods related to specials.
     # @see http://developer.foursquare.com/docs/specials/specials.html
     module Special
+      # Allows users to indicate a special is improper in some way.
+      #
+      # @params special_id [String] The id of the special being flagged.
+      # @param venue_id [String] The id of the venue running the special.
+      # @param problem [String] One of not_redeemable, not_valuable, other.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] text Additional text about why the user has flagged this special.
+      # @require_acting_user Yes
+      # @see https://developer.foursquare.com/docs/specials/flag.html
+      def flag_special(special_id, venue_id, problem, options = {})
+        post("specials/#{special_id}/flag", { :venueId => venue_id, :problem => problem }.merge(options))
+        nil
+      end
+      
       # Gives details about a special, including text and unlock rules.
       #
-      # @param id [String] Id of special to retrieve.
+      # @param special_id [String] Id of special to retrieve.
       # @return [Hashie::Mash] A complete special.
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/specials/specials.html
