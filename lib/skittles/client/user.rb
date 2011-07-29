@@ -1,3 +1,5 @@
+require 'mime/types'
+
 module Skittles
   class Client
     # Define methods related to users.
@@ -125,6 +127,36 @@ module Skittles
       # @see http://developer.foursquare.com/docs/users/todos.html
       def todos(id, sort = 'recent', options = {})
         get("users/#{id}/todos", { :sort => sort }.merge(options)).todos
+      end
+      
+      # Updates the user's profile photo.
+      #
+      # @param photo [String] Photo under 100KB in multipark MIME encoding with content type image/jpeg, image/gif, or image/png. 
+      # @return [Hashie::Mash] The current user object
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/users/update.html
+      def update_user_photo(photo)
+        mime_type = MIME::Types.type_for(photo)[0]
+        params = {
+          :photo => UploadIO.new(photo, mime_type.to_s, "image.#{mime_type.extensions[0]}"),
+          :oauth_token => access_token
+        }
+        uri = URI.parse("#{endpoint}/users/self/update")
+        File.open(photo) do
+          req = Net::HTTP::Post::Multipart.new(uri.path, params)
+          http = Net::HTTP.new(uri.host, uri.port)
+          http.use_ssl = true if uri.scheme == 'https'
+          resp = http.start do |net|
+            net.request(req)
+          end
+          
+          case resp.code.to_i
+          when 200..299
+            return Skittles::Utils.parse_json(resp.body).response.user
+          when 400..599
+            Skittles::Utils.handle_foursquare_error(resp)
+          end
+        end
       end
       
       # Returns profile information for a given user, including selected badges
