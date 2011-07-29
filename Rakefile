@@ -17,7 +17,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/anthonator/skittles"
   gem.license = "MIT"
   gem.summary = %Q{Foursquare v2 REST API client library for Ruby}
-  gem.description = %Q{Foursquare v2 REST API client library for Ruby}
+  gem.description = %Q{A Ruby implementation of the Foursquare v2 REST API. This library implements the Foursquare v2 API and the Foursquare Venues Project (beta) endpoints.}
   gem.email = "anthony@sticksnleaves.com"
   gem.version = Skittles::VERSION
   gem.authors = ["Anthony Smith"]
