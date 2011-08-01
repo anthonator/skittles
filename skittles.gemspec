@@ -8,15 +8,9 @@ Gem::Specification.new do |s|
   s.version = "0.5.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-<<<<<<< HEAD
   s.authors = [%q{Anthony Smith}]
   s.date = %q{2011-07-29}
   s.description = %q{A Ruby implementation of the Foursquare v2 REST API. This library implements the Foursquare v2 API and the Foursquare Venues Project (beta) endpoints.}
-=======
-  s.authors = ["Anthony Smith"]
-  s.date = %q{2011-07-17}
-  s.description = %q{Foursquare v2 REST API client library for Ruby}
->>>>>>> ddc431f88bb36548cc847ce84739010c0c7b8ae9
   s.email = %q{anthony@sticksnleaves.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -41,15 +35,9 @@ Gem::Specification.new do |s|
     "lib/skittles/version.rb"
   ]
   s.homepage = %q{http://github.com/anthonator/skittles}
-<<<<<<< HEAD
   s.licenses = [%q{MIT}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.6}
-=======
-  s.licenses = ["MIT"]
-  s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.0}
->>>>>>> ddc431f88bb36548cc847ce84739010c0c7b8ae9
   s.summary = %q{Foursquare v2 REST API client library for Ruby}
 
   if s.respond_to? :specification_version then
