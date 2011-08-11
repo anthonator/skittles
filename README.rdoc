@@ -1,6 +1,6 @@
 = Skittles
 
-Foursquare v2 REST API client library for Ruby
+A Ruby implementation of the Foursquare v2 REST API. This library implements the Foursquare v2 API and the Foursquare Venues Project (beta) endpoints.
 
 == Documentation
 
