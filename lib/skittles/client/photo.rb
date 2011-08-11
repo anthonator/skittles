@@ -25,6 +25,7 @@ module Skittles
       # @option options [String] tipId The ID of a tip owned by the user.
       # @option options [String] venueId The ID of a venue, provided only when adding a public photo of the venue in general, rather than a private checkin or tip photo using the parameters above.
       # @option options [String] broadcast Whether to broadcast this photo to twitter, facebook or both.
+      # @option options [Integer] Allows for a public photo and viewable at the venue. Valid values are 1 and 0 (default). 
       # @option options [String] ll Latitude and longitude of the user's location.
       # @option options [Decimal] llAcc Accuracy of the user's latitude and longitude, in meters.
       # @option options [Decimal] alt Altitude of the user's location, in meters.
