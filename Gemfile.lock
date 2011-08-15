@@ -41,7 +41,7 @@ DEPENDENCIES
   hashie (~> 1.0.0)
   jeweler (~> 1.6.4)
   mime-types (~> 1.16)
-  oauth2 (~> 0.5.0.rc1)
+  oauth2 (~> 0.5.0)
   rcov
   rspec (~> 2.5.0)
   yajl-ruby (~> 0.8.1)
