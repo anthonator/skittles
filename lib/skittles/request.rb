@@ -42,7 +42,7 @@ module Skittles
 
 		  	begin
 		  	  response = connection.request(method, paramify(path, options), headers)
-		  	rescue OAuth2::StandardError => e
+		  	rescue OAuth2::Error => e
 		  	  Skittles::Utils.handle_foursquare_error(e.response)
 		  	else
 		  	  Skittles::Error
