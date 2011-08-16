@@ -26,5 +26,13 @@ describe "Skittles" do
         response.should be_a_kind_of Array
       end
     end
+    describe :venue_herenow do
+      it "should return a list of users checked in to a venue" do
+        response = Skittles.herenow("953829")
+        response.should_not be_nil
+        response.should be_a_kind_of Hashie::Mash
+        response.count.should_not be_nil
+      end
+    end
   end
 end
