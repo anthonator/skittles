@@ -9,7 +9,7 @@ describe "Skittles" do
         response.items.should be_a_kind_of Array
       end
     end
-    
+
     describe :update do
       it 'should return the a JSON response of the current user' do
         response = Skittles.update_user_photo('spec/ruby.jpeg')
@@ -17,13 +17,21 @@ describe "Skittles" do
       end
     end
   end
-  
+
   describe :venue do
     describe :venue_search do
       it 'should return an array of values' do
         response = Skittles.venue_search('40.7,-75', :query => 'Brooklyn Bridge Park - Pier 1')
         response.should_not be_nil
         response.should be_a_kind_of Array
+      end
+    end
+    describe :venue_herenow do
+      it "should return a list of users checked in to a venue" do
+        response = Skittles.herenow("953829")
+        response.should_not be_nil
+        response.should be_a_kind_of Hashie::Mash
+        response.count.should_not be_nil
       end
     end
   end
