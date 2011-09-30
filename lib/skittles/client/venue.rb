@@ -55,11 +55,12 @@ module Skittles
       # @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters.
       # @option options [Decimal] alt Altitude of the user's location, in meters.
       # @option options [Decimal] altAcc Accuracy of the user's altitude, in meters.
-      # @option radius [Integer] Radius to search within, in meters.
-      # @option section [String] One of food, drinks, coffee, shops, or arts. Limits results to venues with categories matching these terms.
-      # @option query [String] A search term to be applies against tips, category tips, etc. at a venue.
-      # @option limit [Integer] Number of results to return, up to 50.
-      # @option basis [String] If present and set to friends or me, limits results to only places where friends have visited or user has visited, respectively.
+      # @option options radius [Integer] Radius to search within, in meters.
+      # @option options section [String] One of food, drinks, coffee, shops, or arts. Limits results to venues with categories matching these terms.
+      # @option options query [String] A search term to be applies against tips, category tips, etc. at a venue.
+      # @option options limit [Integer] Number of results to return, up to 50.
+      # @option options basis [String] If present and set to friends or me, limits results to only places where friends have visited or user has visited, respectively.
+      # @option options [String] novelty Pass new or old to limit results to places the acting user hasn't been or has been, respectively. Omitting this parameter returns a mixture.
       # @return [Hashie::Mash] Response fields keywords, warnings and groups.
       # @requires_acting_user No
       # @see https://developer.foursquare.com/docs/venues/explore.html
