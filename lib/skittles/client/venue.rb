@@ -185,6 +185,18 @@ module Skittles
         get("venues/#{id}/links").links
       end
       
+      # The lists that a venue appears on.
+      #
+      # @param id [String] The venue to get lists for.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] group Either created, edited, followed, friends or suggested.
+      # @return [Hashie::Mash] The lists a venue appears on.
+      # @requies_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/listed.html
+      def venue_listed(id, options = {})
+        get("venues/#{id}/listed", options).lists
+      end
+      
       # Allows a user to mark a venue to-do, with optional text.
       #
       # @param id The venue you want to mark to-do.
@@ -235,18 +247,6 @@ module Skittles
       # @see http://developer.foursquare.com/docs/venues/tips.html
       def venue_tips(id, options = {})
         get("venues/#{id}/tips", options).tips
-      end
-      
-      # The lists that a venue appears on.
-      #
-      # @param id [String] The venue to get lists for.
-      # @param options [Hash] A customizable set of options.
-      # @option options [String] group Either created, edited, followed, friends or suggested.
-      # @return [Hashie::Mash] The lists a venue appears on.
-      # @requies_acting_user Yes
-      # @see https://developer.foursquare.com/docs/venues/listed.html
-      def venue_listed(id, options = {})
-        get("venues/#{id}/listed", options).lists
       end
 		end
 	end
