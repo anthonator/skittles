@@ -49,7 +49,7 @@ module Skittles
 		  	end
 		  	
 		  	unless raw
-		  		result = Skittles::Utils.parse_json(response)
+		  		result = Skittles::Utils.parse_json(response.body)
 		  	end
 		  	
 		  	raw ? response : result.response
