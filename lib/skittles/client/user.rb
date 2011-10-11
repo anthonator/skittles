@@ -102,7 +102,7 @@ module Skittles
       # @option options[String] ll Latitude and longitude of the user's location.
       # @return [Hashie::Mash] If group is specified it will contain a count and items of lists. If no group is specified, it contains a groups array containing elements, each with type, name, an optional count and optional items.
       # @see https://developer.foursquare.com/docs/users/lists.html
-      def lists(id = 'self', options = {})
+      def user_lists(id = 'self', options = {})
         get("users/#{id}/lists", options).lists
       end
       
