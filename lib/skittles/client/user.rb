@@ -96,12 +96,12 @@ module Skittles
       
       # Returns a user's mayorships
       #
-      # @params user [String] Identity of the user to get mayorships for. Pass self to get friends of the acting user.
+      # @params id [String] Identity of the user to get mayorships for. Pass self to get friends of the acting user.
       # @return [Hashie::Mash] A count and items of objects which currently only contain compact venue objects.
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/users/mayorships.html
-      def mayorships(user = 'self')
-        get("users/#{user}/mayorships").mayorships
+      def mayorships(id = 'self')
+        get("users/#{id}/mayorships").mayorships
       end
       
       # Changes whether the acting user will receive pings (phone
