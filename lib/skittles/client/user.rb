@@ -100,7 +100,8 @@ module Skittles
       # @param options [Hash] A customizable set of options.
       # @option options [String] group Either created, edited, followed, friends or suggested.
       # @option options[String] ll Latitude and longitude of the user's location.
-      # @return [Hashie::Mash] If group is specified it will contain a count and items of lists. If no group is specified, it contains a groups array containing elements, each with type, name, an optional count and optional items.
+      # @return [Hashie::Mash] A user's lists.
+      # @requies_acting_user Yes
       # @see https://developer.foursquare.com/docs/users/lists.html
       def user_lists(id = 'self', options = {})
         get("users/#{id}/lists", options).lists
