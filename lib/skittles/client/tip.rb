@@ -30,6 +30,18 @@ module Skittles
         get("tips/#{id}").tip
       end
       
+      # The lists that a tip appears on.
+      #
+      # @param id [String] The tip to get lists for.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] group Either created, edited, followed, friends or suggested.
+      # @return The lists a tip appears on.
+      # @require_acting_user Yes
+      # @see https://developer.foursquare.com/docs/tips/listed.html
+      def tip_listed(id, options = {})
+        get("tips/#{id}/listed", options).lists
+      end
+      
       # Allows the acting user to mark a tip done.
       #
       # @param id [String] The tip you want to mark done.
