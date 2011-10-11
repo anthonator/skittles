@@ -169,6 +169,10 @@ module Skittles
         get("venues/#{id}").venue
       end
       
+      def venue_events(id)
+        get("venues/#{id}/events").events
+      end
+      
       # Returns URLs or identifier from third parties that have been applied to this
       # venue.
       #
