@@ -94,6 +94,18 @@ module Skittles
         get('users/leaderboard').leaderboard
       end
       
+      # A user's lists.
+      #
+      # @param id [String] Identity of the user to get lists for. Pass self to get lists of the acting user.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] group Either created, edited, followed, friends or suggested.
+      # @option options[String] ll Latitude and longitude of the user's location.
+      # @return [Hashie::Mash] If group is specified it will contain a count and items of lists. If no group is specified, it contains a groups array containing elements, each with type, name, an optional count and optional items.
+      # @see https://developer.foursquare.com/docs/users/lists.html
+      def lists(id = 'self', options = {})
+        get("users/#{id}/lists", options).lists
+      end
+      
       # Returns a user's mayorships
       #
       # @params id [String] Identity of the user to get mayorships for. Pass self to get friends of the acting user.
