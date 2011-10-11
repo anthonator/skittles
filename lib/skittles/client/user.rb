@@ -166,7 +166,7 @@ module Skittles
       # @return [Hashie::Mash] Profile information for a given user.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/users.html
-      def user(id)
+      def user(id = 'self')
         get("users/#{id}").user
       end
       
