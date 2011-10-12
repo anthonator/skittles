@@ -131,6 +131,7 @@ module Skittles
       
       # Returns todos from a user.
       #
+      # @deprecated
       # @param id Identity of the user to get todos for. Pass self to get todos of the acting user.
       # @param sort One of recent or popular. Nearby requires geolat and geolong to be provided.
       # @param options [Hash] A customizable set of options.
@@ -212,6 +213,7 @@ module Skittles
       
       # Returns tips from a user.
       #
+      # @deprecated
       # @param id [String] Identity of the user to get tips from. Pass self to get tips of the acting user.
       # @option options [Hash] A customizable set of options.
       # @option options [String] sort One of recent, nearby, or popular. Nearby requires geolat and geolong to be provided.
