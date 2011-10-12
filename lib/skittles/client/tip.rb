@@ -44,6 +44,7 @@ module Skittles
       
       # Allows the acting user to mark a tip done.
       #
+      # @deprecated
       # @param id [String] The tip you want to mark done.
       # @return [Hashie::Mash] The marked to-do.
       # @requires_acting_user Yes
@@ -54,6 +55,7 @@ module Skittles
       
       # Allows you to mark a tip to-do.
       #
+      # @deprecated
       # @param id [String] The tip you want to mark to-do.
       # @return [Hashie::Mash] The newly-added to-do.
       # @requires_acting_user Yes
@@ -79,6 +81,7 @@ module Skittles
       
       # Allows you to remove a tip from your to-do list or done list.
       #
+      # @deprecated
       # @param id [String] The tip you want to unmark.
       # @return [Hashie::Mash] The tip being acted on.
       # @requires_acting_user No
