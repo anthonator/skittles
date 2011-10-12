@@ -199,6 +199,7 @@ module Skittles
       
       # Allows a user to mark a venue to-do, with optional text.
       #
+      # @deprecated
       # @param id The venue you want to mark to-do.
       # @param options [Hash] A customizable set of options.
       # @option options [String] text The text of the tip.
