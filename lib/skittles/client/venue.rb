@@ -225,6 +225,9 @@ module Skittles
 			# @option options [String] query A search term to be applied against titles.
 			# @option options [Integer] limit Number of results to return, up to 50.
 			# @option options [String] intent Indicates your intent in performing the search.
+			# @option options [Integer] radius Limit results to venues within this many meters of the specified location.
+			# @option options [Decimal] sw With ne, limits results to the bounding quadrangle defined by the latitude and longitude given by sw as its south-west corner, and ne as its north-east corner.
+			# @option options [Decimal] ne See sw 
 			# @option options [String] categoryId A category to limit the results to. (experimental)
 			# @option options [String] url A third-party URL which is attempted to match against a map of venues to URLs. (experimental)
 			# @option options [String] providerId Identifier for a known third party that is part of a map of venues to URLs, used in conjunction with linkedId. (experimental)
