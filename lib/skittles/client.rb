@@ -15,5 +15,6 @@ module Skittles
 		include Skittles::Client::Photo
 		include Skittles::Client::Setting
 		include Skittles::Client::Special
+		include Skittles::Client::List
 	end
 end
