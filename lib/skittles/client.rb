@@ -16,5 +16,6 @@ module Skittles
 		include Skittles::Client::Setting
 		include Skittles::Client::Special
 		include Skittles::Client::List
+		include Skittles::Client::Event
 	end
 end

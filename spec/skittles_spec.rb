@@ -133,4 +133,24 @@ describe Skittles do
       end
     end
   end
+  
+  describe :event do
+    it 'should return an event object' do
+      # can't find an event id
+    end
+    
+    describe :event_search do
+      it 'should return an array of events' do
+        response = Skittles.event_search('songkick.com', '8183976')
+        response.should_not be_nil
+      end
+    end
+    
+    describe :event_categories do
+      it 'should return an array of categories' do
+        response = Skittles.event_categories
+        response.should be_kind_of Array
+      end
+    end
+  end
 end
