@@ -75,6 +75,13 @@ describe Skittles do
         response.items.should be_a_kind_of Array
       end
     end
+    
+    describe :venue_suggestcompletion do
+      it 'should return an array of venues' do
+        response = Skittles.venue_suggestcompletion('39.7720648060275,-86.15538597106934', 'the terminator')[0]
+        response.id.should be_a_kind_of String
+      end
+    end
   end
   
   describe :tip do

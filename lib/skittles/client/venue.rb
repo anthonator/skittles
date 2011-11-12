@@ -239,6 +239,10 @@ module Skittles
 			  get('venues/search', { :ll => ll }.merge(options)).venues
 			end
 			
+			def venue_suggestcompletion(ll, query, options = {})
+			  get('venues/suggestcompletion', { :ll => ll, :query => query }.merge(options)).minivenues
+			end
+			
 			# Returns tips for a venue.
       #
       # @param id [String] The venue you want tips for.
