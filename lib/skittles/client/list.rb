@@ -3,6 +3,16 @@ module Skittles
     # Define methods related to lists.
     # @see https://developer.foursquare.com/docs/lists/lists.html
     module List
+      # Allows users to create a new list.
+      #
+      # @param name [String] Name of the list.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] description Description of the list.
+      # @option options [String] collaborative Boolean indicating if this list can be edited by friends.
+      # @option options [String] photoId The id of a photo that should be set as the list photo.
+      # @return [Hashie::Mash] The list that was just created.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/lists/add.html
       def add_list(name, options = {})
         post("lists/add", { :name => name }.merge(options)).list
       end
