@@ -239,11 +239,24 @@ module Skittles
         get('venues/search', { :ll => ll }.merge(options)).venues
       end
       
+      # Returns a list of mini-venues matching the search term, near the location.
+      #
+      # @note This is an experimental API.
+      # @param ll [String] Latitude and longitude of the user's location. (Required for query searches)
+      # @param query [String] A search term to be applied against titles. Must be at least 3 characters long.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters. (Does not currently affect search results)
+      # @option options [Decimal] alt Altitude of the user's location, in meters. (Does not currently affect search results.)
+      # @option options [Decimal] altAcc Accuracy of the user's altitude, in meters. (Does not currently affect search results.)
+      # @option options [Integer] limit Number of results to return, up to 100.
+      # @return [Hashie::Mash] An array of venue objects.
+      # @require_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/suggestcompletion 
       def venue_suggestcompletion(ll, query, options = {})
         get('venues/suggestcompletion', { :ll => ll, :query => query }.merge(options)).minivenues
       end
 			
-			# Returns tips for a venue.
+      # Returns tips for a venue.
       #
       # @param id [String] The venue you want tips for.
       # @param options [Hash] A customizable set of options.
@@ -256,6 +269,6 @@ module Skittles
       def venue_tips(id, options = {})
         get("venues/#{id}/tips", options).tips
       end
-		end
-	end
+    end
+  end
 end
