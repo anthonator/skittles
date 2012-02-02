@@ -1,9 +1,9 @@
 module Skittles
-	class Client
-		# Defines methods related to venues.
-		# @see http://developer.foursquare.com/docs/venues/venues.html
-		module Venue
-		  # Adds a new venue.
+  class Client
+    # Defines methods related to venues.
+    # @see http://developer.foursquare.com/docs/venues/venues.html
+    module Venue
+      # Adds a new venue.
       #
       # All fields are optional, but one of either a valid address or a
       # geolat/geolong pair must be provided. It is recommended that a
@@ -210,38 +210,38 @@ module Skittles
         post("venues/#{id}/marktodo").todo
       end
 			
-			# Returns a list of venues near the current location, optionally matching
-			# the search term.
-			#
-			# If lat and long is provided, each venue includes a distance. If
-			# authenticated, the method will return venue metadata related to you and
-			# your friends. If you do not authenticate, you will not get this data. 
-			#
-			# @param ll [String] Latitude and longitude of the user's location, so response can include distance.
-			# @param options [Hash] A customizable set of options.
-			# @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters.
-			# @option options [Decimal] alt Altitude of the user's location, in meters.
-			# @option options [Decimal] altAcc Accuracy of the user's altitude, in meters.
-			# @option options [String] query A search term to be applied against titles.
-			# @option options [Integer] limit Number of results to return, up to 50.
-			# @option options [String] intent Indicates your intent in performing the search.
-			# @option options [Integer] radius Limit results to venues within this many meters of the specified location.
-			# @option options [Decimal] sw With ne, limits results to the bounding quadrangle defined by the latitude and longitude given by sw as its south-west corner, and ne as its north-east corner.
-			# @option options [Decimal] ne See sw 
-			# @option options [String] categoryId A category to limit the results to. (experimental)
-			# @option options [String] url A third-party URL which is attempted to match against a map of venues to URLs. (experimental)
-			# @option options [String] providerId Identifier for a known third party that is part of a map of venues to URLs, used in conjunction with linkedId. (experimental)
-			# @option options [Integer] linkedId Identifier used by third party specified in providerId, which will be attempted to match against a map of venues to URLs. (experimental)
-			# @return [Hashie::Mash] An array of objects representing groups of venues.
-			# @requires_acting_user No
-			# @see http://developer.foursquare.com/docs/venues/search.html 
-			def venue_search(ll, options = {})
-			  get('venues/search', { :ll => ll }.merge(options)).venues
-			end
-			
-			def venue_suggestcompletion(ll, query, options = {})
-			  get('venues/suggestcompletion', { :ll => ll, :query => query }.merge(options)).minivenues
-			end
+      # Returns a list of venues near the current location, optionally matching
+      # the search term.
+      #
+      # If lat and long is provided, each venue includes a distance. If
+      # authenticated, the method will return venue metadata related to you and
+      # your friends. If you do not authenticate, you will not get this data. 
+      #
+      # @param ll [String] Latitude and longitude of the user's location, so response can include distance.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Decimal] llAcc Accuracy of latitude and longitude, in meters.
+      # @option options [Decimal] alt Altitude of the user's location, in meters.
+      # @option options [Decimal] altAcc Accuracy of the user's altitude, in meters.
+      # @option options [String] query A search term to be applied against titles.
+      # @option options [Integer] limit Number of results to return, up to 50.
+      # @option options [String] intent Indicates your intent in performing the search.
+      # @option options [Integer] radius Limit results to venues within this many meters of the specified location.
+      # @option options [Decimal] sw With ne, limits results to the bounding quadrangle defined by the latitude and longitude given by sw as its south-west corner, and ne as its north-east corner.
+      # @option options [Decimal] ne See sw 
+      # @option options [String] categoryId A category to limit the results to. (experimental)
+      # @option options [String] url A third-party URL which is attempted to match against a map of venues to URLs. (experimental)
+      # @option options [String] providerId Identifier for a known third party that is part of a map of venues to URLs, used in conjunction with linkedId. (experimental)
+      # @option options [Integer] linkedId Identifier used by third party specified in providerId, which will be attempted to match against a map of venues to URLs. (experimental)
+      # @return [Hashie::Mash] An array of objects representing groups of venues.
+      # @requires_acting_user No
+      # @see http://developer.foursquare.com/docs/venues/search.html 
+      def venue_search(ll, options = {})
+        get('venues/search', { :ll => ll }.merge(options)).venues
+      end
+      
+      def venue_suggestcompletion(ll, query, options = {})
+        get('venues/suggestcompletion', { :ll => ll, :query => query }.merge(options)).minivenues
+      end
 			
 			# Returns tips for a venue.
       #
