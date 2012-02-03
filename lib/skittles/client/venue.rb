@@ -105,6 +105,17 @@ module Skittles
 			  get('venues/managed')
 			end
 			
+			# Returns menu information for a venue.
+			#
+			# @note In some cases, menu information is provided by a partner. When displaying information from a partner, you must attribute them as specified on the {https://developer.foursquare.com/docs/venues/menu Foursquare Developers} site.
+			# @param id [String] The venue id for which menu is being requested.
+			# @return [Hashie::Mash] Name of the provider of the menu information and a count and items of menu. 
+			# @require_acting_user No
+			# @see https://developer.foursquare.com/docs/venues/menu
+			def menu(id)
+			  get("venues/#{id}/menu")
+			end
+			
 			# Returns photos for a venue.
       #
       # @param id [String] The venue you want photos for.
