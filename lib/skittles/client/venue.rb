@@ -283,6 +283,19 @@ module Skittles
         get('venues/search', { :ll => ll }.merge(options)).venues
       end
       
+      # Get venue stats over a given time range.
+      #
+      # @param ids [String] The venue id to retrieve stats for.
+      # @param options [Hash] A customizable set of options.
+      # @options option [Integer] startAt The start of the time range to retrieve stats for (seconds since epoch). If omitted, all-time stats will be returned.
+      # @options option [Integer] endAt The end of the time range to retrieve stats for (seconds since epoch). If omitted, the current time is assumed.
+      # @return [Hashie::Mash] A venue stats object.
+      # @require_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/stats
+      def venue_stats(id, options = {})
+        get("venues/#{id}/stats", options)
+      end
+      
       # Returns a list of mini-venues matching the search term, near the location.
       #
       # @note This is an experimental API.
