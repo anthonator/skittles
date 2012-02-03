@@ -96,6 +96,15 @@ module Skittles
         get("venues/#{id}/herenow", options).hereNow
       end
 			
+			# Get a list of venues the current user manages.
+			#
+			# @return [Hashie::Mash] An array of compact venues the user manages.
+			# @require_acting_user Yes
+			# @see https://developer.foursquare.com/docs/venues/managed
+			def managed_venues
+			  get('venues/managed')
+			end
+			
 			# Returns photos for a venue.
       #
       # @param id [String] The venue you want photos for.
