@@ -9,11 +9,11 @@ group :development do
   gem "rspec"
   gem "bundler"
   gem "jeweler"
-  gem "rcov", ">= 0"
+  gem "simplecov"
   gem "yard"
 end
 
-gem "oauth2",     "~> 0.5.1"
+gem "oauth2",     "~> 0.5.2"
 gem "yajl-ruby",  "~> 1.1.0"
 gem "hashie",     "~> 1.2.0"
 gem "mime-types", "~> 1.17.2"
