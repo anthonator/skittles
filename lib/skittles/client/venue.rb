@@ -137,6 +137,16 @@ module Skittles
         nil
       end
       
+      # Returns a list of venues similar to the specified venue.
+      #
+      # @param id [String] The venue you want similar venues for.
+      # @return A count and items of similar venues.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/similar
+      def similar_venues(id)
+        get("venues/#{id}/similar")
+      end
+      
       # Returns a list of venues near the current location with the most people
       # currently checked in.
       #
