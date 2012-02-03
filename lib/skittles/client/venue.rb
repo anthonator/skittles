@@ -149,11 +149,25 @@ module Skittles
       # Returns a list of venues similar to the specified venue.
       #
       # @param id [String] The venue you want similar venues for.
-      # @return A count and items of similar venues.
+      # @return [Hashie::Mash] A count and items of similar venues.
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/venues/similar
       def similar_venues(id)
         get("venues/#{id}/similar")
+      end
+      
+      # Get daily venue stats for a list of venues over a time range.
+      #
+      # @param ids [Array] A string array of venue ids to retrieve series data for.
+      # @param start_at [Integer] The start of the time range to retrieve stats for (seconds since epoch).
+      # @param options [Hash] A customizable set of options.
+      # @options option [Integer] endAt The end of the time range to retrieve stats for (seconds since epoch). If omitted, the current time is assumed.
+      # @return [Hashie::Mash] An array of venue time series data objects, one for each venue.
+      # @require_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/timeseries
+      def timeseries(ids, start_at, options = {})
+        ids = ids.joing(',') if ids.kind_of? Array
+        get('venues/timeseries', { :venueId => ids, :startAt => start_at }.merge(options))
       end
       
       # Returns a list of venues near the current location with the most people
