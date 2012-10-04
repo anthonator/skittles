@@ -1,10 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe Skittles do
-  before(:each) do
-    @list = Skittles.add_list('A list created by Skittles')
-  end
-    
+describe Skittles do  
   describe :user do
     describe :mayorships do
       it 'should return a count and array of items' do
@@ -100,7 +96,11 @@ describe Skittles do
     end
   end
   
-  describe :list do    
+  describe :list do
+    before(:each) do
+      @list = Skittles.add_list('A list created by Skittles')
+    end
+
     it 'should return a list object' do
       response = Skittles.list(@list.id)
       response.should_not be_nil
