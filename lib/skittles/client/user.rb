@@ -53,12 +53,14 @@ module Skittles
       
       # Sends a friend request to another user.
       #
+      # @deprecated Use Skittles#send_friend_request
       # @param id [String] The user ID to which a request will be sent.
       # @return [Hashie::Mash] A user object for the pending user.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/request.html
       def friend_request(id)
-        get("users/#{id}").user
+        warn '[DEPRECATED] #friend_request(id) is depcrecated. Please use #send_friend_request(id) instead.'
+        send_friend_request(id)
       end
       
       # Shows a user the list of users with whom they have a pending friend
@@ -129,6 +131,16 @@ module Skittles
       # @see https://developer.foursquare.com/docs/users/photos
       def user_photos(id = 'self', options = {})
         get("/users/#{id}/photos", options).photos
+      end
+
+      # Sends a friend request to another user.
+      #
+      # @param id [String] The user ID to which a request will be sent.
+      # @return [Hashie::Mash] A user object for the pending user.
+      # @requires_acting_user Yes
+      # @see http://developer.foursquare.com/docs/users/request.html
+      def send_friend_request(id)
+        get("users/#{id}").user
       end
       
       # Changes whether the acting user will receive pings (phone
