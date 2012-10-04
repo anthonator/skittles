@@ -46,6 +46,28 @@ module Skittles
       def categories
         get('venues/categories').categories
       end
+
+      # Allows changes to be made to a venue. Any blank parameter deletes an
+      # an old value, any unspecified parameter does nothing.
+      #
+      # @param id [String] id of the venue to edit.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] name
+      # @option options [String] address
+      # @option options [String] crossStreet
+      # @option options [String] city
+      # @option options [String] state
+      # @option options [String] zip
+      # @option options [String] phone
+      # @option options [String] ll
+      # @option options [String] categoryId
+      # @option options [String] url
+      # @option options [String] hours
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/edit
+      def edit_venue(id, options = {})
+        post("venues/#{id}/edit", options)
+      end
       
       # Returns a list of recommended venues near the current location.
       #
@@ -96,14 +118,16 @@ module Skittles
         get("venues/#{id}/herenow", options).hereNow
       end
 
-      # Returns hours for a venue
+      # Allows the acting user to like or unlike a venue.
       #
-      # @params id [String] Id of a venue to return hours for.
-      # @return An array of timeframes for hours.
-      # @requires_acting_user No
-      # @see https://developer.foursquare.com/docs/venues/hours
-      def hours(id)
-        get("venues/#{id}/hours").hours
+      # @param id [String] Id of the venue to like or unlike.
+      # @param options [Hash] A customizable set of options
+      # @option options [Integer] set If 1, like this venue. If 0 unlike this venue. Default is 1.
+      # @return [Hashie::Mash] Updated count and groups of users who like this venue.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/venues/like
+      def like_venue(id, options = {})
+        post("venues/#{id}/like", options).likes
       end
 			
 			# Get a list of venues the current user manages.
@@ -112,7 +136,7 @@ module Skittles
 			# @require_acting_user Yes
 			# @see https://developer.foursquare.com/docs/venues/managed
 			def managed_venues
-			  get('venues/managed')
+			  get('venues/managed').venues
 			end
 			
 			# Returns menu information for a venue.
@@ -174,7 +198,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/venues/similar
       def similar_venues(id)
-        get("venues/#{id}/similar")
+        get("venues/#{id}/similar").similarVenues
       end
       
       # Get daily venue stats for a list of venues over a time range.
@@ -223,10 +247,38 @@ module Skittles
         get("venues/#{id}").venue
       end
       
+      # Allows access to information about the current events at a place.
+      #
+      # At this time we are only able to distrubute Music events and limited information about Movie events via this endpoint due to partner restrictions.
+      #
+      # @param id Id of the venue to return event information for.
+      # @return A count and items of event items.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/events
       def venue_events(id)
         get("venues/#{id}/events").events
       end
+
+      # Returns hours for a venue
+      #
+      # @params id [String] Id of a venue to return hours for.
+      # @return An array of timeframes for hours.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/hours
+      def venue_hours(id)
+        get("venues/#{id}/hours").hours
+      end
       
+      # Returns friends and a total count of users who have liked this venue.
+      #
+      # @param id Id of the venue to return likes for.
+      # @return A count and groups of users who like this venue.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/likes
+      def venue_likes(id)
+        get("venues/#{id}/likes").likes
+      end
+
       # Returns URLs or identifier from third parties that have been applied to this
       # venue.
       #
@@ -262,6 +314,20 @@ module Skittles
       # @see http://developer.foursquare.com/docs/venues/marktodo.html
       def venue_marktodo(id, options = {})
         post("venues/#{id}/marktodo").todo
+      end
+
+      # Returns photos for a venue.
+      #
+      # @param id [String] The venue you want photos for.
+      # @param group [String] One of checkin, venue or multi (for both).
+      # @param  options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 500.
+      # @option options [Integer] offset Used to page through results.
+      # @return [Hashie::Mash] A count of items of photo.
+      # @requires_acting_user No
+      # @see http://developer.foursquare.com/docs/venues/photos.html
+      def venue_photos(id, group = 'checkin', options = {})
+        get("venues/#{id}/photos", {:group => group }.merge(options)).photos
       end
 			
       # Returns a list of venues near the current location, optionally matching
