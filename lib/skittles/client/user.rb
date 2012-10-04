@@ -18,7 +18,7 @@ module Skittles
       #
       # @param id [String] Id for user to view badges for.
       # @return [Hashie::Mash] Hierarchical groups of badge ids or, for unlocked badges, badge unlock ids, as they are intended for display.
-      # @return [Hashie::Mash] A map of badge ids or badge unlock ids to a badge.
+      # @return [Hashie::Mash] A map of badge ids or badge unlock ids to a badge or a hierarchical groups of badge ids or, for unlocked badges, badge unlock ids, as they are intended for display.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/badges.html
       def badges(id)
@@ -31,6 +31,7 @@ module Skittles
       # @param options [Hash] A customizable set of options.
       # @option options [Integer] limit Number of results to return, up to 500.
       # @option options [Integer] offset Used to page through results.
+      # @option options [String] sort How to sort the returned checkeins. Can be newestfirst or oldestfirst.
       # @option options [Integer] afterTimestamp Retrieve the first results to follow these seconds since epoch.
       # @option options [Integer] beforeTimestamp Retrieve the first results prior to these seconds since epoch.
       # @return [Hashie::Mash] A count of items in check-ins.
@@ -115,6 +116,19 @@ module Skittles
       # @see https://developer.foursquare.com/docs/users/mayorships.html
       def mayorships(id = 'self')
         get("users/#{id}/mayorships").mayorships
+      end
+
+      # Returns photos from a user.
+      #
+      # @param id [String] Identity of the user to get photos for. Pass self to get photos of the acting user.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 500.
+      # @option options [Integer] offset Used to page through results
+      # @return [Hashie::Mash] A count and items of photos.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/users/photos
+      def user_photos(id = 'self', options = {})
+        get("/users/#{id}/photos", options).photos
       end
       
       # Changes whether the acting user will receive pings (phone
@@ -208,7 +222,7 @@ module Skittles
       # @requires_acing_user Yes
       # @see http://developer.foursquare.com/docs/users/search.html
       def user_search(options = {})
-        get('users/search', options).results
+        get('users/search', options)
       end
       
       # Returns tips from a user.
