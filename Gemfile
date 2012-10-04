@@ -13,7 +13,7 @@ group :development do
   gem "yard"
 end
 
-gem "oauth2",     "~> 0.5.2"
-gem "yajl-ruby",  "~> 1.1.0"
-gem "hashie",     "~> 1.2.0"
-gem "mime-types", "~> 1.17.2"
+gem "oauth2",     "~> 0.8"
+gem "yajl-ruby",  "~> 1.1"
+gem "hashie",     "~> 1.2"
+gem "mime-types", "~> 1.19"
