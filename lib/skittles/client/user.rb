@@ -248,7 +248,8 @@ module Skittles
       # @param id [String] For now, only "self" is supported.
       # @param options [Hash] A customizable set of options.
       # @option options [Integer] beforeTimestamp Seconds since epoch.
-      # @option options [Integer] Seconds after epoch.
+      # @option options [Integer] afterTimestamp Seconds after epoch.
+      # @option options [String] categoryId Limits returned venues to those in this category.
       # @return [Hashie::Mash] A count and items of objects containing a beenHere count, lastHereAt timestamp, and venue compact venues.
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/venuehistory.html
