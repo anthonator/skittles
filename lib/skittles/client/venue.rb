@@ -95,6 +95,16 @@ module Skittles
       def herenow(id, options = {})
         get("venues/#{id}/herenow", options).hereNow
       end
+
+      # Returns hours for a venue
+      #
+      # @params id [String] Id of a venue to return hours for.
+      # @return An array of timeframes for hours.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/venues/hours
+      def hours(id)
+        get("venues/#{id}/hours").hours
+      end
 			
 			# Get a list of venues the current user manages.
 			#
