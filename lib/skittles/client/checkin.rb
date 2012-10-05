@@ -92,6 +92,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/checkins/reply
       def checkin_reply(id, options = {})
+        post("checkins/#{id}/reply", options).reply
       end
 
       # Allows the acting user to like or unlike a checkin.
