@@ -18,11 +18,35 @@ module Skittles
           :text => text
         }.merge(options)).tip
       end
+
+      # Returns an array of users who have done a tip.
+      #
+      # @param [String] id The tip to retrieve users who have done this tip for.
+      # @param options [Hash] A customizable set of options.
+      # @option options [Integer] limit Number of results to return, up to 200.
+      # @option options [Integer] offset Used to page through results.
+      # @return A count and items of compact user objects.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/tips/done
+      def done_tip(id, options = {})
+        get("tips/#{id}/done", options).users
+      end
+
+      # Allows a user to like or unlike a tip.
+      #
+      # @param id The tip to like or unlike.
+      # @param set if 1, like this tip. If 0 unlike. Default value is 1.
+      # @return [Hashie::Mash] Updated count and groups of users who like this tip.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/tips/like
+      def like_tip(id, set = 1)
+        post("tips/#{id}/like", { :set => set }).likes
+      end
       
       # Gives details about a tip, including which users (especially friends)
       # have marked the tip to-do or done.
       #
-      # @param id [String] Id of tip to retrieve.
+      # @param id [String] Id of the tip to retrieve.
       # @return [Hashie::Mash] A complete tip.
       # @requires_acting_user No
       # @see http://developer.foursquare.com/docs/tips/tips.html
@@ -30,6 +54,16 @@ module Skittles
         get("tips/#{id}").tip
       end
       
+      # Returns friends and a total count of users who have liked this tip.
+      #
+      # @param id [String] The tip to return likes for.
+      # @return [Hashie::Mash] A count of groups of users who like this tip.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/tips/likes
+      def tip_likes(id)
+        get("tips/#{id}/likes").likes
+      end
+
       # The lists that a tip appears on.
       #
       # @param id [String] The tip to get lists for.
