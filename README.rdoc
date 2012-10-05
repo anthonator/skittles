@@ -1,4 +1,4 @@
-= Skittles
+= Skittles [![endorse](http://api.coderwall.com/anthonator/endorsecount.png)](http://coderwall.com/anthonator)
 
 A Ruby implementation of the Foursquare v2 REST API. This library implements the Foursquare v2 API and the Foursquare Venues Project (beta) endpoints.
 
