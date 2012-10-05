@@ -59,7 +59,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/request.html
       def friend_request(id)
-        warn '[DEPRECATED] #friend_request(id) is depcrecated. Please use #send_friend_request(id) instead.'
+        deprecated('friend_request', 'send_friend_request')
         send_friend_request(id)
       end
       
@@ -157,7 +157,7 @@ module Skittles
       
       # Returns todos from a user.
       #
-      # @deprecated
+      # @deprecated Use Skittles#list_todos
       # @param id Identity of the user to get todos for. Pass self to get todos of the acting user.
       # @param sort One of recent or popular. Nearby requires geolat and geolong to be provided.
       # @param options [Hash] A customizable set of options.
@@ -166,6 +166,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/todos.html
       def todos(id, sort = 'recent', options = {})
+        deprecated("todos", "list_todos")
         get("users/#{id}/todos", { :sort => sort }.merge(options)).todos
       end
       
@@ -239,7 +240,7 @@ module Skittles
       
       # Returns tips from a user.
       #
-      # @deprecated
+      # @deprecated User Skittles#list_tips
       # @param id [String] Identity of the user to get tips from. Pass self to get tips of the acting user.
       # @option options [Hash] A customizable set of options.
       # @option options [String] sort One of recent, nearby, or popular. Nearby requires geolat and geolong to be provided.
@@ -250,6 +251,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see http://developer.foursquare.com/docs/users/tips.html
       def user_tips(id, options = {})
+        deprecated("user_tips", "list_tips")
         get("users/#{id}/tips").tips
       end
       
