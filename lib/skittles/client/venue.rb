@@ -121,13 +121,12 @@ module Skittles
       # Allows the acting user to like or unlike a venue.
       #
       # @param id [String] Id of the venue to like or unlike.
-      # @param options [Hash] A customizable set of options
-      # @option options [Integer] set If 1, like this venue. If 0 unlike this venue. Default is 1.
+      # @param set [Integer] If 1, like this venue. If 0 unlike this venue. Default is 1.
       # @return [Hashie::Mash] Updated count and groups of users who like this venue.
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/venues/like
-      def like_venue(id, options = {})
-        post("venues/#{id}/like", options).likes
+      def like_venue(id, set = 1)
+        post("venues/#{id}/like", { set }).likes
       end
 			
 			# Get a list of venues the current user manages.
