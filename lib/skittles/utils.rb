@@ -34,5 +34,9 @@ module Skittles
       def self.parse_json(json)
         Hashie::Mash.new(Yajl::Parser.new.parse(json))
       end
+
+      def deprecated(deprecated_method, replacement_method)
+        warn '[DEPRECATED] Skittles##{deprecated_method} is depcrecated. Please use Skittles##{replacement_method} instead.'
+      end
   end
 end
