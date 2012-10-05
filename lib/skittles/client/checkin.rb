@@ -20,10 +20,25 @@ module Skittles
       def add_checkin(broadcast = 'private', options = {})
         post("checkins/add", { :broadcast => broadcast }.merge(options)).checkin
       end
+
+      # Post user generated content from an external app to a check-in.
+      #
+      # @note This endpoint is part of foursquare's new Apps Platform, currently in developer preview.
+      # @param id [String} The id of the checkin to add a post to.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] text The text of the post, up to 200 characters.
+      # @option options [String] url Link for more details.
+      # @option options [String] contentId Identifier for the post to be used in a native link, up to 50 characters.
+      # @return [Hashie::Mash] The newly-created post.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/checkins/addpost
+      def checkin_addpost(id, options = {})
+        post("checkins/#{id}/addpost", options).post
+      end
       
       # Get details of a checkin.
       #
-      # @param id [String] The ID of the checkin to retrieve additional information for.
+      # @param id [String] The id of the checkin to retrieve additional information for.
       # @param options [Hash] A customizable set of options.
       # @option options [String] signature When checkins are sent to public feeds such as Twitter, foursquare appends a signature (s=XXXXXX) allowing users to bypass the friends-only access check on checkins. The same value can be used here for programmatic access to otherwise inaccessible checkins.
       # @return [Hashie::Mash] A complete checkin object.
@@ -54,6 +69,40 @@ module Skittles
       # @see http://developer.foursquare.com/docs/checkins/deletecomment.html
       def checkin_deletecomment(checkin_id, comment_id)
         post("checkins/#{checkin_id}/deletecomment", { :commentId => comment_id }).checkin
+      end
+
+      # Returns friends and a total count of users who have liked this checkin.
+      #
+      # @param id [String] The id of the checkin to return likes from.
+      # @return [Hashie::Mash] A count and groups of users who like this checkin.
+      # @requires_acting_user No
+      # @see https://developer.foursquare.com/docs/checkins/likes
+      def checkin_likes(id)
+        get("checkins/#{id}/likes").likes
+      end
+
+      # Reply to a user about their check-in.
+      #
+      # @param id [String] The id of the checkin to reply to.
+      # @param options [Hash] A customizable set of options.
+      # @option options [String] text The text of th reply, up to 200 characters.
+      # @option options [String] url Link for more details.
+      # @option options [String] contentId Identifier for the reply to be used in a native link, up to 50 characters.
+      # @return The newly-created reply.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/checkins/reply
+      def checkin_reply(id, options = {})
+      end
+
+      # Allows the acting user to like or unlike a checkin.
+      #
+      # @param id [String] The id of the checkin to like or unlike.
+      # @param set [Integer] If 1, like this checkin. If 0 unlike it. Default is 1.
+      # @return [Hashie::Mash] Updated count and groups of users who like this checkin.
+      # @requires_acting_user Yes
+      # @see https://developer.foursquare.com/docs/checkins/like
+      def like_checkin(id, set = 1)
+        post("checkins/#{id}/like", { set }).likes
       end
       
       # Returns a list of recent checkins from friends.
