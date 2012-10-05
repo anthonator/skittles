@@ -103,7 +103,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/checkins/like
       def like_checkin(id, set = 1)
-        post("checkins/#{id}/like", { set }).likes
+        post("checkins/#{id}/like", { :set => set }).likes
       end
       
       # Returns a list of recent checkins from friends.

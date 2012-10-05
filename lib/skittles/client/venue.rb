@@ -126,7 +126,7 @@ module Skittles
       # @requires_acting_user Yes
       # @see https://developer.foursquare.com/docs/venues/like
       def like_venue(id, set = 1)
-        post("venues/#{id}/like", { set }).likes
+        post("venues/#{id}/like", { :set => set }).likes
       end
 			
 			# Get a list of venues the current user manages.
