@@ -12,17 +12,17 @@ If you find a discrepency in our documentation please [file an issue](https://gi
 
 ```ruby
 require 'rubygems'
-  require 'skittles'
+require 'skittles'
   
-  Skittles.configure do |config|
-    config.client_id     = '...'
-    config.client_secret = '...'
-    config.access_token  = '...'
-  end
+Skittles.configure do |config|
+  config.client_id     = '...'
+  config.client_secret = '...'
+  config.access_token  = '...'
+end
   
-  begin
-    Skittles.venue('211152')
-  rescue Skittles::Error => e
-    puts "You recieved the #{e.type} error and a status code of #{e.code} which means #{e.detail}."
-  end
+begin
+  Skittles.venue('211152')
+rescue Skittles::Error => e
+  puts "You recieved the #{e.type} error and a status code of #{e.code} which means #{e.detail}."
+end
 ```
