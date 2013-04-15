@@ -6,12 +6,12 @@ module Skittles
 	module Request
 		# Perform an HTTP GET request
 		def get(path, options = {}, headers = {}, raw = false)
-			request(:get, path, options, headers, raw)
+		  request(:get, path, options, headers, raw)
 		end
 		
 		# Performs an HTTP POST request
 		def post(path, options = {}, headers = {}, raw = false)
-			request(:post, path, options, headers, raw)
+		  request(:post, path, options, headers, raw)
 		end
 		
 		# Performs an HTTP PUT request
@@ -27,32 +27,32 @@ module Skittles
 		private
 		  #Perform an HTTP request
 		  def request(method, path, options, headers, raw)
-		  	headers.merge!({
-		  		'User-Agent' => user_agent
-		  	})
+		    headers.merge!({
+		      'User-Agent' => user_agent
+		    })
 		  	
-		  	options.merge!({
-		  		:client_id     => client_id,
-		  		:client_secret => client_secret
-		  	})
+		    options.merge!({
+		      :client_id     => client_id,
+		      :client_secret => client_secret
+		    })
 		  	
-		  	options.merge!({
-		  	  :v => Time.now.strftime('%Y%m%d')
-		  	})
+		    options.merge!({
+		      :v => Time.now.strftime('%Y%m%d')
+		    })
 		  	
-		  	begin
-		  	  response = connection.request(method, paramify(path, options), headers)
-		  	rescue OAuth2::Error => e
-		  	  Skittles::Utils.handle_foursquare_error(e.response)
-		  	else
-		  	  Skittles::Error
-		  	end
+		    begin
+		      response = connection.request(method, paramify(path, options), headers)
+		    rescue OAuth2::Error => e
+		      Skittles::Utils.handle_foursquare_error(e.response)
+		    else
+		      Skittles::Error
+		    end
 		  	
-		  	unless raw
-		  		result = Skittles::Utils.parse_json(response.body)
-		  	end
+		    unless raw
+		      result = Skittles::Utils.parse_json(response.body)
+		    end
 		  	
-		  	raw ? response : result.response
+		    raw ? response : result.response
 		  end
 		  
 		  # Encode path and turn params into HTTP query.
