@@ -57,7 +57,7 @@ module Skittles
       
       # Encode path and turn params into HTTP query.
       def paramify(path, params)
-        URI::encode("#{path}?#{params.map { |k,v| "#{k}=#{CGI::escape(v)}" }.join('&')}")
+        "#{path}?#{params.map { |k,v| "#{k}=#{CGI::escape(v)}" }.join('&')}"
       end
   end
 end
