@@ -4,25 +4,16 @@ module Skittles
     private 
       def self.handle_foursquare_error(response)
         info = parse_json(response.body).meta
-        case info.code.to_i
-        when 400
-          error = Skittles::BadRequest.new
-        when 401
-          error = Skittles::Unauthorized.new
-        when 404
-          error = Skittles::NotFound.new
-        when 405
-          error = Skittles::MethodNotAllowed.new
-        when 500
-          error = Skittles::InternalServerError.new
-        when 502
-          error = Skittles::BadGateway.new
-        when 503
-          error = Skittles::ServiceUnavailable.new
-        when 504
-          error = Skittles::GatewayTimeout.new
-        else
-          error = Skittles::Error.new
+        error = case info.code.to_i
+        when 400 then BadRequest.new
+        when 401 then Unauthorized.new
+        when 404 then NotFound.new
+        when 405 then MethodNotAllowed.new
+        when 500 then InternalServerError.new
+        when 502 then BadGateway.new
+        when 503 then ServiceUnavailable.new
+        when 504 then GatewayTimeout.new
+        else Error.new
         end
         error.code = info.code.to_i
         error.type = info.errorType
@@ -36,7 +27,7 @@ module Skittles
       end
 
       def deprecated(deprecated_method, replacement_method)
-        warn '[DEPRECATED] Skittles##{deprecated_method} is depcrecated. Please use Skittles##{replacement_method} instead.'
+        warn "[DEPRECATED] Skittles##{deprecated_method} is depcrecated. Please use Skittles##{replacement_method} instead."
       end
   end
 end
