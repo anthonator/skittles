@@ -1,3 +1,6 @@
+require 'uri'
+require 'multi_json'
+require 'hashie'
 require File.expand_path('../skittles/utils', __FILE__)
 require File.expand_path('../skittles/error', __FILE__)
 require File.expand_path('../skittles/version', __FILE__)
