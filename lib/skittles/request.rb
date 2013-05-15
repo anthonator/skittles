@@ -1,7 +1,3 @@
-require 'uri'
-require 'yajl'
-require 'hashie'
-
 module Skittles
   module Request
     # Perform an HTTP GET request
