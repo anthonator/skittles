@@ -14,6 +14,6 @@ group :development do
 end
 
 gem "oauth2",     "~> 0.8"
-gem "yajl-ruby",  "~> 1.1"
+gem "multi_json",  "~> 1.7"
 gem "hashie",     "~> 1.2"
 gem "mime-types", "~> 1.19"
