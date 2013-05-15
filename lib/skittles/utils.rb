@@ -23,7 +23,7 @@ module Skittles
       
       # Parses JSON and returns a Hashie::Mash
       def self.parse_json(json)
-        Hashie::Mash.new(Yajl::Parser.new.parse(json))
+        Hashie::Mash.new(MultiJson.load(json))
       end
 
       def deprecated(deprecated_method, replacement_method)
